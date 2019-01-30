@@ -12,14 +12,24 @@ import java.util.Date;
  * @author dkaus
  */
 public class HourContract {
+    private String codigo;
     private Date date;
     private Double valuePerHour;
     private Integer hours;
 
-    public HourContract(Date date, Double valuePerHour, Integer hours) {
+    public HourContract(String codigo, Date date, Double valuePerHour, Integer hours) {
+        this.codigo = codigo;
         this.date = date;
         this.valuePerHour = valuePerHour;
         this.hours = hours;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public Date getDate() {

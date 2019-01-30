@@ -23,14 +23,11 @@ import java.util.Scanner;
  */
 public class WorkerView {
     Department department;
-    String id;
-    String workerName;
-    Double baseSalary;
+    String id, workerName, codeContract;
+    Double baseSalary, valuePerHour;
     WorkerLevel level;
-    Integer qtdContract;
+    Integer qtdContract, hours;
     Date date;
-    Double valuePerHour;
-    Integer hours;
     Scanner sc = new Scanner(System.in);
     WorkerController workerController = new WorkerController();
     Worker worker;
@@ -61,8 +58,9 @@ public class WorkerView {
         
         do{ 
             cont++;
-           
-           
+            sc.nextLine();
+            System.out.println("Enter contract code : ");
+            codeContract = sc.nextLine();
             System.out.printf("Enter contract %d data: \n", cont);
             System.out.println("Date(dd/MM/YYYY)");
             date = sdf.parse(sc.next());
@@ -71,7 +69,7 @@ public class WorkerView {
             valuePerHour = sc.nextDouble();
             System.out.println("Duration (hours): ");
             hours = sc.nextInt();
-            HourContract hourContract = new HourContract(date, valuePerHour, hours);
+            HourContract hourContract = new HourContract(codeContract, date, valuePerHour, hours);
             this.workerController.addContract(worker, hourContract);
         }while(cont != qtdContract);
         }
@@ -93,7 +91,6 @@ public class WorkerView {
             System.out.println("-----------CONTRACTS---------");
             for(HourContract obj: worker.getHourContract()){
                 System.out.println("Date: "+obj.getDate());
-                // System.out.println("Date: "+obj.getDate().getDay()+"/"+obj.getDate().getMonth()+"/"+obj.getDate().getYear());
                  System.out.println("Value per hour: "+obj.getValuePerHour());
                  System.out.println("Duration (hours): "+obj.getHours());
             }
@@ -120,6 +117,21 @@ public class WorkerView {
 	System.out.println("Name: "+ worker.getName());
 	System.out.println("Department:"+ worker.getDepartment());
 	System.out.println("Income: "+ income );
+    } 
     }
+    
+    public void removeContractView(){
+        sc.nextLine(); 
+        System.out.println("Id Worker: ");
+        worker = this.workerController.getWorker(sc.nextLine());
+        if(worker == null){
+            System.out.println("Not exists!");
+        }
+        else{
+            System.out.println("Enter contract code : ");
+            codeContract = sc.nextLine();
+            workerController.removeContract(worker, codeContract);
+            System.out.println("Removido com sucesso!");
+        }
     }
 }

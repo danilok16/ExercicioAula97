@@ -17,7 +17,8 @@ public class MainMenuView {
          System.out.println("2 - ADD CONTRACTS");
          System.out.println("3 - SELECT WORKER");
          System.out.println("4 - INCOME");
-         System.out.println("5 - EXIT");
+         System.out.println("5 - REMOVE CONTRACT");
+         System.out.println("6 - EXIT");
     }
     
 }

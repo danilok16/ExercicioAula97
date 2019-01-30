@@ -33,8 +33,13 @@ public class WorkerController {
         return workerDao.select(id);
     }
     
-    public void removeContract(HourContract contract){
-        
+    public void removeContract(Worker worker, String codeContract){
+        for(HourContract obj : worker.getHourContract()){
+            if( codeContract.equals(obj.getCodigo())){
+                worker.getHourContract().remove(obj);
+                return;
+            }
+        }
     }
     
     public double income(Worker worker, int year, int month){

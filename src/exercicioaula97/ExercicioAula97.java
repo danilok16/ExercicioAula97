@@ -38,9 +38,11 @@ public class ExercicioAula97 {
                break;
                case 4: workerView.incomeView();
                break;
+               case 5 : workerView.removeContractView();
+               break;
            }
           sc.nextLine();
-        }while(resp != 5);
+        }while(resp != 6);
      
     }
     
